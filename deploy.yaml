@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: buggy
-          image: akslabacr999.azurecr.io/sample
+          image: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
