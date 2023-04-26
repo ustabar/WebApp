@@ -1,0 +1,27 @@
+﻿@page
+@model WebApp.Pages.TestAzSQLDBModel
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>City</th>
+            <th>Traffic Code</th>
+            <th>Call Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Cities != null)
+        {
+            foreach (var city in Model.Cities)
+            {
+                <tr>
+                    <td> @city.Name</td>
+                    <td> @city.TrafficCode</td>
+                    <td> @city.CallCode</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

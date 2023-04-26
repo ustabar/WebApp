@@ -1,0 +1,29 @@
+﻿@page
+@model WebApp.Pages.TestWebAppModel
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Feels</th>
+            <th>TempF</th>
+            <th>TempC</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Forecasts != null)
+        {
+            foreach (var forecast in Model.Forecasts)
+            {
+                <tr>
+                    <td> @forecast.date</td>
+                    <td> @forecast.summary</td>
+                    <td> @forecast.temperatureF</td>
+                    <td> @forecast.temperatureC</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
