@@ -48,6 +48,15 @@ jobs:
               name: Set up kubelogin for non-interactive login
               with:
                 kubelogin-version: v0.0.25
+            - uses: cschleiden/replace-tokens@v1
+              with:
+                files: '["*.yaml"]'
+                tokenPrefix: __
+                tokenSuffix: __
+              env:
+                REG: ${{ env.AZURE_CONTAINER_REGISTRY }}
+                NAME: ${{ env.CONTAINER_NAME }}
+                TAG: ${{ github.sha }}
             - uses: azure/aks-set-context@v3
               name: Get K8s context
               with:
@@ -62,4 +71,3 @@ jobs:
                 images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
                 manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
                 namespace: default
-                args: --set TAG=${{ github.sha }}
