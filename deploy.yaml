@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: buggy
-          image: __REPO__.azurecr.io/__NAME__:__TAG__
+          image: __REG__.azurecr.io/__NAME__:__TAG__
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
